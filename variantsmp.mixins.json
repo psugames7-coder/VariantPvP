@@ -20,7 +20,8 @@
         "ItemUseMixin",
         "SplashPotionMixin",
         "VaultServerMixin",
-        "VaultServerInvoker"
+        "VaultServerInvoker",
+        "VaultServerDataInvoker"
     ],
     "injectors": {
         "defaultRequire": 0

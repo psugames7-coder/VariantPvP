@@ -1,5 +1,6 @@
 package com.variantsmp;
 
+import com.variantsmp.mixin.VaultServerDataInvoker;
 import com.variantsmp.mixin.VaultServerInvoker;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -51,7 +52,7 @@ public final class VaultPicker {
             if (!stack.isOf(Items.OMINOUS_TRIAL_KEY)) return false;
             if (!VaultServerInvoker.variantsmp$isValidKey(config, stack)) return false;
             if (!Stages.vaultReady(p)) return false;
-            if (serverData.hasRewardedPlayer(p)) return false;
+            if (((VaultServerDataInvoker) (Object) serverData).variantsmp$hasRewardedPlayer(p)) return false;
 
             int picks = VaultServerInvoker.variantsmp$generateLoot(world, config, pos, p, stack).size();
             if (picks <= 0) return false;
@@ -106,7 +107,7 @@ public final class VaultPicker {
                 override = null;
                 overrideFor = null;
             }
-            if (s.serverData().hasRewardedPlayer(p)) Stages.vaultUsed(p);
+            if (((VaultServerDataInvoker) (Object) s.serverData()).variantsmp$hasRewardedPlayer(p)) Stages.vaultUsed(p);
         } catch (Throwable ignored) {
         }
     }
